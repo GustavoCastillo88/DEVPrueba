@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DevPrue.Models.Productos>
+<h2>Productos: </h2>
+<p>
+    @Html.ActionLink("Agregar Producto", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codigoDeBarra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigoDeBarra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.precio)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.id }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.id }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+
+
+</table>
+<p>
+    @Html.ActionLink("Regresar al Inicio", "Index")
+</p>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SucursalesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="codigoDeBarra" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="precio" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Sucursal" Relationship="Self.Valores" FromRole="Productos" ToRole="Sucursal" />
+  </EntityType>
+  <EntityType Name="Sucursal">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Productos" Relationship="Self.Valores" FromRole="Sucursal" ToRole="Productos" />
+  </EntityType>
+  <Association Name="Valores">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="SucursalesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Productos" EntityType="Self.Productos" />
+    <EntitySet Name="Sucursal" EntityType="Self.Sucursal" />
+    <AssociationSet Name="Valores" Association="Self.Valores">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="Sucursal" EntitySet="Sucursal" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

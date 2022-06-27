@@ -1,0 +1,15 @@
+﻿@model IEnumerable<DevPrue.Models.Productos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Sucursal A", "ConsultarSucursalA", null, new { @class = "btn btn-info" })
+
+    @Html.ActionLink("Sucursal B", "ConsultarSucursalB", null, new { @class = "btn btn-danger" })
+</p>
+
+

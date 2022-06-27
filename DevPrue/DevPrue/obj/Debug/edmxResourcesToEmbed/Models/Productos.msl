@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SucursalesModelStoreContainer" CdmEntityContainer="SucursalesEntities">
+    <EntitySetMapping Name="Productos">
+      <EntityTypeMapping TypeName="SucursalesModel.Productos">
+        <MappingFragment StoreEntitySet="Productos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombreProducto" ColumnName="nombreProducto" />
+          <ScalarProperty Name="codigoDeBarra" ColumnName="codigoDeBarra" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sucursal">
+      <EntityTypeMapping TypeName="SucursalesModel.Sucursal">
+        <MappingFragment StoreEntitySet="Sucursal">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Valores" TypeName="SucursalesModel.Valores" StoreEntitySet="Valores">
+      <EndProperty Name="Productos">
+        <ScalarProperty Name="id" ColumnName="idProducto" />
+      </EndProperty>
+      <EndProperty Name="Sucursal">
+        <ScalarProperty Name="id" ColumnName="idSucursal" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
